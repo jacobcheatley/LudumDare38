@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1450ed42c21eb4e4bbe9ec242311c72a, type: 3}
+  m_Name: Emerald
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300020, guid: d9eff37a67e7f164a9608431eb364ff0, type: 3}
+  Value: 100
+  Name: Emerald
+  OrePrefab: {fileID: 1432192218896014, guid: 20ffc5b541740404097f7d8dbf5fe005, type: 2}

@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
 
         float vertical = Input.GetAxisRaw("VerticalMove");
         if (vertical > 0)
-            rb.AddForce(Vector2.up * 2);
+            rb.AddForce(Vector2.up * 3);
 
         // Drill Rotation
         float verticalDrill = Input.GetAxisRaw("VerticalDrill");

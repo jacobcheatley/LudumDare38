@@ -9,8 +9,8 @@ public class Layer
 
 public class LevelGen : MonoBehaviour
 {
-    [SerializeField] private int width;
     [SerializeField] private Layer[] layers;
+    [SerializeField] private GameConstants constants;
 
     void Start()
     {
@@ -19,8 +19,8 @@ public class LevelGen : MonoBehaviour
         {
             for (int yy = 0; yy < layer.Height; yy++)
             {
-                for (int xx = 0; xx < width; xx++)
-                    Instantiate(layer.Block, Vector3.down * y + Vector3.right * xx, Quaternion.identity);
+                for (int xx = 0; xx < constants.Width; xx++)
+                    Instantiate(layer.Block, Vector3.down * y + Vector3.right * (xx - constants.Width / 2f), Quaternion.identity);
                 y++;
             }
         }
