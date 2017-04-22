@@ -26,9 +26,15 @@ public class ShopButton : MonoBehaviour
 
     public void Clicked()
     {
-        // TODO: Cost checking logic
-        Debug.Log("CLICK");
-        parts.AddPart(Obj);
-        function();
+        if (Cost.CanAfford(parts))
+        {
+            parts.AddPart(Obj);
+            function();
+        }
+        else
+        {
+            // TODO: Error display
+            Debug.Log("Nuk g");
+        }
     }
 }

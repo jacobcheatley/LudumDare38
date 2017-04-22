@@ -23,8 +23,30 @@ public class Cost
     public override string ToString()
     {
         int[] values = {Coal, Ruby, Emerald, Diamond, Starstone, Money};
-        List<string> zippedList = BudgetZip(values, new string[] { "Coal", "Ruby", "Emerald", "Diamond", "Starstone", "$$" });
+        List<string> zippedList = BudgetZip(values, new [] { "Coal", "Ruby", "Emerald", "Diamond", "Starstone", "$$" });
         return string.Join(", ", zippedList.ToArray());
+    }
+
+    public bool CanAfford(PlayerParts parts)
+    {
+        return (
+            parts.Coal >= Coal &&
+            parts.Ruby >= Ruby &&
+            parts.Emerald >= Emerald &&
+            parts.Diamond >= Diamond &&
+            parts.Starstone >= Starstone &&
+            parts.Money >= Money
+            );
+    }
+
+    public void Charge(PlayerParts parts)
+    {
+        parts.Coal -= Coal;
+        parts.Ruby -= Ruby;
+        parts.Emerald -= Emerald;
+        parts.Diamond -= Diamond;
+        parts.Starstone -= Starstone;
+        parts.Money -= Money;
     }
 }
 

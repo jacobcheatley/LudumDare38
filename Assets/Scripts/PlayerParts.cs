@@ -6,6 +6,13 @@ public class PlayerParts : MonoBehaviour
     public FuelTank fuelTank;
     public Thrusters thrusters;
 
+    public int Coal;
+    public int Ruby;
+    public int Emerald;
+    public int Diamond;
+    public int Starstone;
+    public int Money;
+
     [SerializeField] private SpriteRenderer drillRenderer;
     [SerializeField] private SpriteRenderer diggerRenderer;
     
