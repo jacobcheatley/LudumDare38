@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6128b46af6e972469691a20bca3778a, type: 3}
   m_Name: PlatingDefault
   m_EditorClassIdentifier: 
-  PlateColor: {r: 1, g: 1, b: 1, a: 0}
+  PlateColor: {r: 1, g: 1, b: 1, a: 1}
   Name: Default
   MaxHealth: 100

@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a11e46cbc7b30641934fc3e16c3806d, type: 3}
   m_Name: DrillDefault
   m_EditorClassIdentifier: 
-  DrillColor: {r: 1, g: 1, b: 1, a: 0}
+  DrillColor: {r: 1, g: 1, b: 1, a: 1}
   Name: Default
-  Power: 1
+  Speed: 1
+  Power: 0

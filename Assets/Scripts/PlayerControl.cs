@@ -28,7 +28,6 @@ public class PlayerControl : MonoBehaviour
         {
             float newAngle = Mathf.Atan2(verticalDrill, horizontalDrill) * Mathf.Rad2Deg;
             float currentAngle = drillAxis.transform.rotation.eulerAngles.z;
-            Debug.Log(newAngle);
             drillAxis.transform.rotation = Quaternion.AngleAxis(Mathf.LerpAngle(currentAngle, newAngle, Time.deltaTime * 20f), Vector3.forward);
         }
     }

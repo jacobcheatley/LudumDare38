@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c22eae747d6cd42a3b5c2016cc7ea0, type: 3}
   m_Name: Constants
   m_EditorClassIdentifier: 
-  Width: 32
+  Width: 16
   AboveHeight: 16

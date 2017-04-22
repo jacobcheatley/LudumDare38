@@ -4,6 +4,7 @@ public class Block : MonoBehaviour
 {
     [SerializeField] private float destructionTime;
     [SerializeField] private OreRoll[] oreRolls;
+    [SerializeField] private float tier;
 
     [HideInInspector] public OreInfo HeldOre;
     private float currentTimeElapsed = 0f;
@@ -30,11 +31,19 @@ public class Block : MonoBehaviour
 
     void Update()
     {
-        currentTimeElapsed = inDrill ? currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Power : Mathf.Clamp(currentTimeElapsed - Time.deltaTime, 0f, destructionTime);
-        float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
-        renderer.color = new Color(1f, 1f, 1f, alpha);
-        if (currentTimeElapsed >= destructionTime)
-            Destroy(gameObject);
+        if (inDrill && playerParts.drillHead.Power >= tier)
+        {
+            currentTimeElapsed = currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Speed;
+            float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
+            renderer.color = new Color(1f, 1f, 1f, alpha);
+            if (currentTimeElapsed >= destructionTime)
+                Destroy(gameObject);
+        }
+        else
+        {
+            currentTimeElapsed -= Time.deltaTime;
+            currentTimeElapsed = currentTimeElapsed < 0 ? 0 : currentTimeElapsed;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

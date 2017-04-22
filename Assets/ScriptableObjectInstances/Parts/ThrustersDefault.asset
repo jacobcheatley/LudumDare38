@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57080f1d0ea31b14683291b54de676d1, type: 3}
   m_Name: ThrustersDefault
   m_EditorClassIdentifier: 
-  ThrustColor: {r: 1, g: 1, b: 1, a: 0}
+  ThrustColor: {r: 1, g: 1, b: 1, a: 1}
   Name: Default
   Power: 1

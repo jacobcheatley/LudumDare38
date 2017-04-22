@@ -5,5 +5,6 @@ public class DrillHead : ScriptableObject
 {
     public Color DrillColor;
     public string Name;
-    public float Power;
+    public float Speed;
+    public int Power;
 }

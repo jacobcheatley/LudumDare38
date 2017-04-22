@@ -367,7 +367,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339085171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: -1}
+  m_LocalPosition: {x: 0, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 143959706}
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c1a3e152a9aa4ca09d20c3bcbceb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drillHead: {fileID: 11400000, guid: 66d8bff8d55cf9348a5efb2a830a0248, type: 2}
+  drillHead: {fileID: 11400000, guid: e7d3c1f04fce2c844a6adc1cb6954c8f, type: 2}
   fuelTank: {fileID: 11400000, guid: ebb250020e95d354d9fef9e4128c247a, type: 2}
   plating: {fileID: 11400000, guid: b9ae0c3d46e571e49983fad8dd79c3e0, type: 2}
   thrusters: {fileID: 11400000, guid: dbd8cd8c52234d344aa8b9b65d202f79, type: 2}
@@ -468,13 +468,22 @@ MonoBehaviour:
   layers:
   - Height: 1
     Block: {fileID: 1953953821426474, guid: 4781fd8fbddc60d43b4dc68b8e397ced, type: 2}
+    HasCaves: 0
   - Height: 4
     Block: {fileID: 1058442014896712, guid: 1bb51e41d34596643be1195142c449d7, type: 2}
+    HasCaves: 0
   - Height: 40
     Block: {fileID: 1425969676581018, guid: 4e87f3a5af2084a479329cd062865c36, type: 2}
+    HasCaves: 1
   - Height: 100
     Block: {fileID: 1425969676581018, guid: e5c9b499627ba6f43a422cd2e4c2b07a, type: 2}
+    HasCaves: 1
+  - Height: 50
+    Block: {fileID: 1425969676581018, guid: a9c7eb807751fe94b81659c3bfad4f9c, type: 2}
+    HasCaves: 1
   constants: {fileID: 11400000, guid: 4d4857c2ff40bb94098d0c4d9a0dc9c9, type: 2}
+  boundary: {fileID: 1698489072460562, guid: 9fd03440cff14d94d9a81a04e296a3a0, type: 2}
+  caveThreshold: 0.2
 --- !u!4 &454934424
 Transform:
   m_ObjectHideFlags: 0
@@ -563,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c56c36d931273c4fb1b159684ac3d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referencePixelsPerUnit: 16
+  referencePixelsPerUnit: 32
   referenceOrthographicSize: 512
   digger: {fileID: 339085171}
   constants: {fileID: 11400000, guid: 4d4857c2ff40bb94098d0c4d9a0dc9c9, type: 2}
@@ -597,7 +606,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.12510814, g: 0.3258785, b: 0.6544118, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -608,7 +617,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.359375
+  orthographic size: 8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a11e46cbc7b30641934fc3e16c3806d, type: 3}
   m_Name: DrillSteel
   m_EditorClassIdentifier: 
-  DrillColor: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 0}
+  DrillColor: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 1}
   Name: Steel
-  Power: 1.5
+  Speed: 1.5
+  Power: 0
