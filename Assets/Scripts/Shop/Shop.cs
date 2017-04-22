@@ -23,8 +23,8 @@ public class Cost
     public override string ToString()
     {
         int[] values = {Coal, Ruby, Emerald, Diamond, Starstone, Money};
-        List<string> zippedList = BudgetZip(values, new string[] { "Coal", "Ruby", "Emerald", "Diamond", "Starstone", "Money" });
-        return string.Join(",", zippedList.ToArray());
+        List<string> zippedList = BudgetZip(values, new string[] { "Coal", "Ruby", "Emerald", "Diamond", "Starstone", "$$" });
+        return string.Join(", ", zippedList.ToArray());
     }
 }
 
@@ -73,30 +73,82 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        UpdateDescriptions();
-        PlaceShopButton(drillHeadPlace, drillSprite, drillHeads[drillIndex]);
-        PlaceShopButton(fuelTankPlace, fuelTankSprite, fuelTanks[fuelIndex]);
-        PlaceShopButton(thrustersPlace, thrustersSprite, thrusters[thrustersIndex]);
-        PlaceShopButton(escapeRocketPlace, escapeRocketSprite, escapeRocket);
-    }
+        PlaceShopButton(drillHeadPlace, drillSprite, drillHeads[drillIndex], NextDrill);
+        PlaceShopButton(fuelTankPlace, fuelTankSprite, fuelTanks[fuelIndex], NextFuel);
+        PlaceShopButton(thrustersPlace, thrustersSprite, thrusters[thrustersIndex], NextThrusters);
+        PlaceShopButton(escapeRocketPlace, escapeRocketSprite, escapeRocket, WinGame);
 
-    void PlaceShopButton(Transform place, Sprite sprite, ShopItem item)
-    {
-        GameObject button = Instantiate(shopButtonPrefab, place.position, Quaternion.identity, gameObject.transform);
-        button.GetComponent<ShopButton>().Initialise(item, sprite, parts, () => Destroy(button));
-    }
-
-    public void UpdateDescriptions()
-    {
         UpdateItem(drillHeads[drillIndex], drillName, drillDesc);
         UpdateItem(fuelTanks[fuelIndex], fuelTankName, fuelTankDesc);
         UpdateItem(thrusters[thrustersIndex], thrustersName, thrustersDesc);
         UpdateItem(escapeRocket, escapeRocketName, escapeRocketDesc);
     }
 
+    void NextDrill()
+    {
+        if (drillIndex == drillHeads.Length - 1)
+        {
+            drillName.text = "Sold Out";
+            drillDesc.text = "Sold Out";
+        }
+        else
+        {
+            drillIndex++;
+            PlaceShopButton(drillHeadPlace, drillSprite, drillHeads[drillIndex], NextDrill);
+            UpdateItem(drillHeads[drillIndex], drillName, drillDesc);
+        }
+    }
+
+    void NextFuel()
+    {
+        if (fuelIndex == fuelTanks.Length - 1)
+        {
+            fuelTankName.text = "Sold Out";
+            fuelTankDesc.text = "Sold Out";
+        }
+        else
+        {
+            fuelIndex++;
+            PlaceShopButton(fuelTankPlace, fuelTankSprite, fuelTanks[fuelIndex], NextFuel);
+            UpdateItem(fuelTanks[fuelIndex], fuelTankName, fuelTankDesc);
+        }
+    }
+
+    void NextThrusters()
+    {
+        if (thrustersIndex == thrusters.Length - 1)
+        {
+            thrustersName.text = "Sold Out";
+            thrustersDesc.text = "Sold Out";
+        }
+        else
+        {
+            thrustersIndex++;
+            PlaceShopButton(thrustersPlace, thrustersSprite, thrusters[thrustersIndex], NextThrusters);
+            UpdateItem(thrusters[thrustersIndex], thrustersName, thrustersDesc);
+        }
+    }
+
+    void WinGame()
+    {
+        Debug.Log("A winner is you.");
+    }
+
+    void PlaceShopButton(Transform place, Sprite sprite, ShopItem item, Action next)
+    {
+        GameObject button = Instantiate(shopButtonPrefab, place.position, Quaternion.identity, gameObject.transform);
+        button.GetComponent<ShopButton>().Initialise(item, sprite, parts, () => OnBuy(button, next));
+    }
+
+    private void OnBuy(GameObject button, Action next)
+    {
+        Destroy(button);
+        next();
+    }
+
     private void UpdateItem(ShopItem item, Text name, Text desc)
     {
         name.text = item.Obj.Name;
-        desc.text = string.Format("{0}\n{1}", item.Cost.ToString(), item.Obj.FullDesc());
+        desc.text = string.Format("{0}\n{1}", item.Cost, item.Obj.FullDesc());
     }
 }

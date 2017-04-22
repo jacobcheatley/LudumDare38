@@ -5,7 +5,7 @@ public class EscapeRocket : FullDescObject
 {
     public override string FullDesc()
     {
-        return "Game winning rocket\nmade of starstone.";
+        return "Game winning starstone rocket.";
     }
 
     public override Color ObjectColor()

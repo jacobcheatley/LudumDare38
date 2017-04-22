@@ -23,7 +23,7 @@ public class Block : MonoBehaviour
             if (roll <= oreRoll.Value)
             {
                 HeldOre = oreRoll.Info;
-                Instantiate(HeldOre.OrePrefab, this.gameObject.transform);
+                Instantiate(HeldOre.OrePrefab, gameObject.transform.position + Vector3.back, Quaternion.identity, this.gameObject.transform);
                 break;
             }
         }
