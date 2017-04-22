@@ -79,6 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionTime: 0.8
+  oreRolls: []
+  player: {fileID: 0}
+  HeldOre: {fileID: 0}
 --- !u!212 &212565222695972584
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -32,7 +32,7 @@ public class PixelPerfect : MonoBehaviour
 #endif
 
         Vector3 diggerPosition = digger.transform.position;
-        float newY = NearestPixel(diggerPosition.y - 4f);
+        float newY = NearestPixel(diggerPosition.y - 2f);
         transform.position = new Vector3(-0.5f, newY, -10f);
     }
 

@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 339085172}
   - component: {fileID: 339085175}
   - component: {fileID: 339085176}
+  - component: {fileID: 339085177}
   - component: {fileID: 339085174}
   m_Layer: 0
   m_Name: Digger
@@ -374,31 +375,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &339085174
-BoxCollider2D:
+--- !u!114 &339085174
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339085171}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.09375}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.875, y: 0.6875}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8c1a3e152a9aa4ca09d20c3bcbceb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drillHead: {fileID: 11400000, guid: 66d8bff8d55cf9348a5efb2a830a0248, type: 2}
+  fuelTank: {fileID: 11400000, guid: ebb250020e95d354d9fef9e4128c247a, type: 2}
+  plating: {fileID: 11400000, guid: b9ae0c3d46e571e49983fad8dd79c3e0, type: 2}
+  thrusters: {fileID: 11400000, guid: dbd8cd8c52234d344aa8b9b65d202f79, type: 2}
+  drillHeadObject: {fileID: 132547207}
 --- !u!50 &339085175
 Rigidbody2D:
   serializedVersion: 4
@@ -431,6 +423,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drillAxis: {fileID: 143959705}
+--- !u!58 &339085177
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339085171}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0625}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &454934422
 GameObject:
   m_ObjectHideFlags: 0

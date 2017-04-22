@@ -9,6 +9,7 @@ public class Block : MonoBehaviour
     private float currentTimeElapsed = 0f;
     private SpriteRenderer renderer;
     private bool inDrill = false;
+    private PlayerParts playerParts;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class Block : MonoBehaviour
 
     void Update()
     {
-        currentTimeElapsed = inDrill ? currentTimeElapsed + Time.deltaTime : Mathf.Clamp(currentTimeElapsed - Time.deltaTime, 0f, destructionTime);
+        currentTimeElapsed = inDrill ? currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Power : Mathf.Clamp(currentTimeElapsed - Time.deltaTime, 0f, destructionTime);
         float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
         renderer.color = new Color(1f, 1f, 1f, alpha);
         if (currentTimeElapsed >= destructionTime)
@@ -39,7 +40,10 @@ public class Block : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Drill")
+        {
             inDrill = true;
+            playerParts = other.GetComponentInParent(typeof (PlayerParts)) as PlayerParts;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)

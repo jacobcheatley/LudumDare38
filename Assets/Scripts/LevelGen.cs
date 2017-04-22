@@ -20,7 +20,7 @@ public class LevelGen : MonoBehaviour
             for (int yy = 0; yy < layer.Height; yy++)
             {
                 for (int xx = 0; xx < constants.Width; xx++)
-                    Instantiate(layer.Block, Vector3.down * y + Vector3.right * (xx - constants.Width / 2f), Quaternion.identity);
+                    Instantiate(layer.Block, Vector3.down * y + Vector3.right * (xx - constants.Width / 2f), Quaternion.identity, this.gameObject.transform);
                 y++;
             }
         }
