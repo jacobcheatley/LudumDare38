@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: DrillRuby
   m_EditorClassIdentifier: 
   DrillColor: {r: 1, g: 0, b: 0, a: 1}
-  Name: Ruby
+  Name: Ruby Drill
   Speed: 2.5
   Power: 1
+  Description: Digs hard stone

@@ -4,24 +4,33 @@ public class PlayerParts : MonoBehaviour
 {
     public DrillHead drillHead;
     public FuelTank fuelTank;
-    public Plating plating;
     public Thrusters thrusters;
 
-    [SerializeField] private GameObject drillHeadObject;
-
-    private SpriteRenderer diggerRenderer;
-    private SpriteRenderer drillRenderer;
+    [SerializeField] private SpriteRenderer drillRenderer;
+    [SerializeField] private SpriteRenderer diggerRenderer;
+    
 
     public void Start()
     {
-        diggerRenderer = GetComponent<SpriteRenderer>();
-        drillRenderer = drillHeadObject.GetComponent<SpriteRenderer>();
         UpdateColors();
     }
 
     public void UpdateColors()
     {
-        diggerRenderer.color = plating.PlateColor;
-        drillRenderer.color = drillHead.DrillColor;
+        drillRenderer.color = drillHead.ObjectColor();
+        diggerRenderer.color = fuelTank.ObjectColor();
+    }
+
+    public void AddPart(FullDescObject obj)
+    {
+        if (obj is DrillHead)
+            drillHead = (DrillHead)obj;
+        else if (obj is FuelTank)
+            fuelTank = (FuelTank)obj;
+        else if (obj is Thrusters)
+            thrusters = (Thrusters)obj;
+        else if (obj is EscapeRocket)
+            Debug.Log("Win");
+        UpdateColors();
     }
 }

@@ -12,8 +12,6 @@ public class PlayerControl : MonoBehaviour
     [Header("UI")]
     [SerializeField] private DisplaySlider fuelSlider;
     [SerializeField] private Text fuelText;
-    [SerializeField] private DisplaySlider healthSlider;
-    [SerializeField] private Text healthText;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -33,7 +31,6 @@ public class PlayerControl : MonoBehaviour
         parts = GetComponent<PlayerParts>();
 
         fuel = parts.fuelTank.MaxFuel;
-        health = parts.plating.MaxHealth;
     }
 
     void Update()

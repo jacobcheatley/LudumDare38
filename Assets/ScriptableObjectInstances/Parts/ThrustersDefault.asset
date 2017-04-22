@@ -14,3 +14,4 @@ MonoBehaviour:
   ThrustColor: {r: 1, g: 1, b: 1, a: 1}
   Name: Default
   Power: 1
+  Description: Default.

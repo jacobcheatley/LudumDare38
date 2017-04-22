@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: DrillSteel
   m_EditorClassIdentifier: 
   DrillColor: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 1}
-  Name: Steel
+  Name: Steel Drill
   Speed: 1.5
   Power: 0
+  Description: Just a bit better

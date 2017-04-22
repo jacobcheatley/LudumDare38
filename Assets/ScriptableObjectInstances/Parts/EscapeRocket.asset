@@ -8,11 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a11e46cbc7b30641934fc3e16c3806d, type: 3}
-  m_Name: DrillDefault
+  m_Script: {fileID: 11500000, guid: 257be0fe6c08b36429bed1425cfca212, type: 3}
+  m_Name: EscapeRocket
   m_EditorClassIdentifier: 
-  DrillColor: {r: 1, g: 1, b: 1, a: 1}
-  Name: Default Drill
-  Speed: 1
-  Power: 1
-  Description: Default.
+  Name: Escape Rocket

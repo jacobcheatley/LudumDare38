@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6128b46af6e972469691a20bca3778a, type: 3}
-  m_Name: PlatingDefault
+  m_Script: {fileID: 11500000, guid: 0a8232989456e4d40af9825164535055, type: 3}
+  m_Name: TankBigly
   m_EditorClassIdentifier: 
-  PlateColor: {r: 1, g: 1, b: 1, a: 1}
-  Name: Default
-  MaxHealth: 100
+  Name: Bigly Tank
+  TankColor: {r: 0.9411765, g: 0.5990693, b: 0.16608995, a: 1}
+  MaxFuel: 5000
+  Description: The best tank
