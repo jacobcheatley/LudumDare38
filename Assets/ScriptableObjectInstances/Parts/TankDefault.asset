@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: TankDefault
   m_EditorClassIdentifier: 
   Name: Default
-  MaxFuel: 1000
+  MaxFuel: 500

@@ -34,16 +34,16 @@ public class Block : MonoBehaviour
         if (inDrill && playerParts.drillHead.Power >= tier)
         {
             currentTimeElapsed = currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Speed;
-            float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
-            renderer.color = new Color(1f, 1f, 1f, alpha);
-            if (currentTimeElapsed >= destructionTime)
-                Destroy(gameObject);
         }
         else
         {
             currentTimeElapsed -= Time.deltaTime;
             currentTimeElapsed = currentTimeElapsed < 0 ? 0 : currentTimeElapsed;
         }
+        float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
+        renderer.color = new Color(1f, 1f, 1f, alpha);
+        if (currentTimeElapsed >= destructionTime)
+            Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -57,6 +57,7 @@ public class Block : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log("Exit");
         if (other.tag == "Drill")
             inDrill = false;
     }

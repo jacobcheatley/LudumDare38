@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: TankExpanded
   m_EditorClassIdentifier: 
   Name: Expanded
-  MaxFuel: 5000
+  MaxFuel: 1500
