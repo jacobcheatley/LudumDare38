@@ -11,6 +11,6 @@ public class DisplaySlider : MonoBehaviour
 
     public void SetSize(float size)
     {
-        rect.localScale = new Vector3(size, 1);
+        rect.localScale = new Vector3(size, 1, 1);
     }
 }

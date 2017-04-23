@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource drillAudioSource;
+    [SerializeField] private AudioSource idleAudioSource;
+    [SerializeField] private AudioSource revAudioSource;
     [SerializeField] private AudioClip higherDrillClip;
     [SerializeField] private SoundPlayer soundPlayer;
 
@@ -32,6 +34,7 @@ public class PlayerControl : MonoBehaviour
 
     // Audio
     private float drillVolume = 0f;
+    private float revVolume = 0f;
     private bool setHigherDrill = false;
 
     void Start()
@@ -93,6 +96,13 @@ public class PlayerControl : MonoBehaviour
         drillVolume += drilling ? Time.deltaTime : -Time.deltaTime;
         drillVolume = Mathf.Clamp01(drillVolume);
         drillAudioSource.volume = drillVolume / 3f;
+        
+        if (thrusting || Mathf.Abs(horizontal) > 0)
+            revVolume += Time.deltaTime / 2;
+        else
+            revVolume -= Time.deltaTime / 2;
+        revVolume = Mathf.Clamp01(revVolume);
+        revAudioSource.volume = revVolume / 8f;
 
         // Additional drilling and resource logic
         drillEffector.SetActive(drilling);
@@ -160,5 +170,11 @@ public class PlayerControl : MonoBehaviour
         {
             soundPlayer.PlayFail();
         }
+    }
+
+    public void RefreshFuel()
+    {
+        fuel = parts.fuelTank.MaxFuel;
+        soundPlayer.PlayFuel();
     }
 }

@@ -18,6 +18,7 @@ public class PlayerParts : MonoBehaviour
     [SerializeField] private SpriteRenderer diggerRenderer;
     [SerializeField] private Text resourceText;
     [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private PlayerControl playerControl;
     
 
     public void Start()
@@ -42,7 +43,10 @@ public class PlayerParts : MonoBehaviour
         if (obj is DrillHead)
             drillHead = (DrillHead)obj;
         else if (obj is FuelTank)
+        {
             fuelTank = (FuelTank)obj;
+            playerControl.RefreshFuel();
+        }
         else if (obj is Thrusters)
             thrusters = (Thrusters)obj;
         else if (obj is EscapeRocket)

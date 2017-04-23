@@ -39,7 +39,6 @@ public class ShopButton : MonoBehaviour
         else
         {
             soundPlayer.PlayFail();
-            Debug.Log("Nuk g");
         }
     }
 }
