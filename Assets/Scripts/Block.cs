@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
 
     private float currentTimeElapsed = 0f;
     private SpriteRenderer renderer;
+    private SpriteRenderer oreRenderer;
     private bool inDrill = false;
     private PlayerParts playerParts;
     private SoundPlayer soundPlayer;
@@ -25,7 +26,8 @@ public class Block : MonoBehaviour
             if (roll <= oreRoll.Value)
             {
                 HeldOre = oreRoll.Info;
-                Instantiate(HeldOre.OrePrefab, gameObject.transform.position + Vector3.back, Quaternion.identity, this.gameObject.transform);
+                GameObject ore = Instantiate(HeldOre.OrePrefab, gameObject.transform.position + Vector3.back, Quaternion.identity, this.gameObject.transform);
+                oreRenderer = ore.GetComponent<SpriteRenderer>();
                 break;
             }
         }
@@ -45,6 +47,8 @@ public class Block : MonoBehaviour
         }
         float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
         renderer.color = new Color(1f, 1f, 1f, alpha);
+        if (oreRenderer != null)
+            oreRenderer.color = renderer.color;
         if (currentTimeElapsed >= destructionTime)
         {
             if (HeldOre != null)
