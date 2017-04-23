@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem particles;
+
     [Header("Drill Parts")]
     [SerializeField] private GameObject drillAxis;
     [SerializeField] private GameObject drillEffector;
@@ -30,6 +32,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private AudioMixerSnapshot defaultSnapshot;
     [SerializeField] private AudioMixerSnapshot mutedSnapshot;
+    [SerializeField] private AudioMixerSnapshot winSnapshot;
+    [SerializeField] private AudioMixerSnapshot loseSnapshot;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -41,11 +45,14 @@ public class PlayerControl : MonoBehaviour
     private float fuel;
     private float health;
     private bool inShop;
+    private ParticleSystem.EmissionModule em;
+    private float rate = 0f;
 
     // Audio
     private float drillVolume = 0f;
     private float revVolume = 0f;
     private bool setHigherDrill = false;
+    private bool end = false;
 
     void Start()
     {
@@ -54,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         mainCamera = Camera.main;
         drillAnimator = drillHead.GetComponent<Animator>();
         parts = GetComponent<PlayerParts>();
-
+        em = particles.emission;
         fuel = parts.fuelTank.MaxFuel;
     }
 
@@ -67,7 +74,14 @@ public class PlayerControl : MonoBehaviour
         float vertical = Input.GetAxisRaw("VerticalMove");
         thrusting = vertical > 0;
         if (thrusting)
-            rb.AddForce(Vector2.up * 2.3f * parts.thrusters.Power);
+        {
+            rb.AddForce(Vector2.up * 2.5f * parts.thrusters.Power);
+            rate = 15f * parts.thrusters.Power;
+        }
+        else
+            rate -= Time.deltaTime * 30f;
+
+        em.rateOverTime = Mathf.Clamp(rate, 0f, 20f);
 
 
         // Drill Rotation
@@ -115,6 +129,7 @@ public class PlayerControl : MonoBehaviour
         revVolume = Mathf.Clamp01(revVolume);
         revAudioSource.volume = revVolume / 8f;
 
+        // Ambience
         if (Random.value < 0.1f * Time.deltaTime && transform.position.y >= -4)
             soundPlayer.PlayAboveGround(Mathf.Clamp01((transform.position.y + 4) / 32f));
 
@@ -124,6 +139,12 @@ public class PlayerControl : MonoBehaviour
             soundPlayer.PlayBelowGround(sqrtVol * sqrtVol);
             StartCoroutine(ShakeIt(sqrtVol));
         }
+
+        // BG Music
+        if (!end)
+            soundPlayer.SetMainLoopVolume(Mathf.Clamp01(Mathf.Abs(transform.position.y - 32) / 700f));
+        else
+            soundPlayer.SetMainLoopVolume(Mathf.Lerp(soundPlayer.GetMainLoopVolume(), 0.25f, Time.deltaTime / 3f));
 
         // Additional drilling and resource logic
         drillEffector.SetActive(drilling);
@@ -220,13 +241,15 @@ public class PlayerControl : MonoBehaviour
 
     public void Win()
     {
-        mixer.TransitionToSnapshots(new[] { mutedSnapshot }, new[] { 1f }, 3f);
+        end = true;
+        mixer.TransitionToSnapshots(new[] { winSnapshot }, new[] { 1f }, 3f);
         winCanvas.SetActive(true);
     }
 
     public void Lose()
     {
-        mixer.TransitionToSnapshots(new [] { mutedSnapshot }, new [] { 1f }, 3f);
+        end = true;
+        mixer.TransitionToSnapshots(new [] { loseSnapshot }, new [] { 1f }, 3f);
         gameOverCanvas.SetActive(true);
     }
 }

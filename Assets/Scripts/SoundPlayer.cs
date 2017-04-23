@@ -15,6 +15,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioSource sfx;
     [SerializeField] private AudioSource crunchLoop;
     [SerializeField] private AudioSource ambience;
+    [SerializeField] private AudioSource mainSource;
 
     public void PlayBuy()
     {
@@ -64,5 +65,15 @@ public class SoundPlayer : MonoBehaviour
     public void SetCrunchLoopVolume(float volume)
     {
         crunchLoop.volume = volume;
+    }
+
+    public void SetMainLoopVolume(float volume)
+    {
+        mainSource.volume = volume;
+    }
+
+    public float GetMainLoopVolume()
+    {
+        return mainSource.volume;
     }
 }
