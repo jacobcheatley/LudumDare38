@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     [Header("UI")]
     [SerializeField] private DisplaySlider fuelSlider;
     [SerializeField] private Text fuelText;
+    [SerializeField] private GameObject shopCanvas;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -22,6 +23,7 @@ public class PlayerControl : MonoBehaviour
     private bool thrusting;
     private float fuel;
     private float health;
+    private bool inShop;
 
     void Start()
     {
@@ -46,28 +48,31 @@ public class PlayerControl : MonoBehaviour
 
 
         // Drill Rotation
-        float verticalDrill = Input.GetAxisRaw("VerticalDrill");
-        float horizontalDrill = Input.GetAxisRaw("HorizontalDrill");
-        float currentAngle = drillAxis.transform.rotation.eulerAngles.z;
-        float newAngle = currentAngle;
+        if (!inShop)
+        {
+            float verticalDrill = Input.GetAxisRaw("VerticalDrill");
+            float horizontalDrill = Input.GetAxisRaw("HorizontalDrill");
+            float currentAngle = drillAxis.transform.rotation.eulerAngles.z;
+            float newAngle = currentAngle;
 
-        if (verticalDrill != 0 || horizontalDrill != 0)
-        {
-            newAngle = Mathf.Atan2(verticalDrill, horizontalDrill) * Mathf.Rad2Deg;
-            drilling = true;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            newAngle = Mathf.Atan2(mousePosition.y - transform.position.y, mousePosition.x - transform.position.x) * Mathf.Rad2Deg;
-            drilling = true;
-        }
-        else
-        {
-            drilling = false;
-        }
+            if (verticalDrill != 0 || horizontalDrill != 0)
+            {
+                newAngle = Mathf.Atan2(verticalDrill, horizontalDrill) * Mathf.Rad2Deg;
+                drilling = true;
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                newAngle = Mathf.Atan2(mousePosition.y - transform.position.y, mousePosition.x - transform.position.x) * Mathf.Rad2Deg;
+                drilling = true;
+            }
+            else
+            {
+                drilling = false;
+            }
 
-        drillAxis.transform.rotation = Quaternion.AngleAxis(Mathf.LerpAngle(currentAngle, newAngle, Time.deltaTime * 20f), Vector3.forward);
+            drillAxis.transform.rotation = Quaternion.AngleAxis(Mathf.LerpAngle(currentAngle, newAngle, Time.deltaTime * 20f), Vector3.forward);
+        }
 
         // Additional drilling and resource logic
         drillEffector.SetActive(drilling);
@@ -78,5 +83,23 @@ public class PlayerControl : MonoBehaviour
 
         fuelSlider.SetSize(fuel / parts.fuelTank.MaxFuel);
         fuelText.text = ((int)fuel).ToString();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Shop")
+        {
+            inShop = true;
+            shopCanvas.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Shop")
+        {
+            inShop = false;
+            shopCanvas.SetActive(false);
+        }
     }
 }

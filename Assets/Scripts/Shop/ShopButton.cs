@@ -29,6 +29,7 @@ public class ShopButton : MonoBehaviour
         if (Cost.CanAfford(parts))
         {
             parts.AddPart(Obj);
+            Cost.Charge(parts);
             function();
         }
         else

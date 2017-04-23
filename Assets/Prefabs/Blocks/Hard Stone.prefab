@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d6ed0f57f1184ab4c649a9c16354b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionTime: 1.5
+  destructionTime: 1.2
   oreRolls:
   - Info: {fileID: 11400000, guid: 9fbde18cb17d18d4fabfe636aeec66c5, type: 2}
     Value: 0.01

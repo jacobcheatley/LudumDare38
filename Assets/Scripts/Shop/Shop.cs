@@ -104,6 +104,8 @@ public class Shop : MonoBehaviour
         UpdateItem(fuelTanks[fuelIndex], fuelTankName, fuelTankDesc);
         UpdateItem(thrusters[thrustersIndex], thrustersName, thrustersDesc);
         UpdateItem(escapeRocket, escapeRocketName, escapeRocketDesc);
+
+        gameObject.SetActive(false);
     }
 
     void NextDrill()

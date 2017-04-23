@@ -78,12 +78,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d6ed0f57f1184ab4c649a9c16354b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionTime: 1.5
+  destructionTime: 1
   oreRolls:
   - Info: {fileID: 11400000, guid: c91b9a705f0c5b34b868976c5d7483c8, type: 2}
     Value: 0.01
   - Info: {fileID: 11400000, guid: 87df1c2abb6a5d9439759c03be628189, type: 2}
     Value: 0.06
+  tier: 0
   HeldOre: {fileID: 0}
 --- !u!212 &212040426670400658
 SpriteRenderer:
