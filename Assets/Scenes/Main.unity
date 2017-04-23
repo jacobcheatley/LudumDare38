@@ -1363,6 +1363,7 @@ GameObject:
   - component: {fileID: 339085176}
   - component: {fileID: 339085177}
   - component: {fileID: 339085174}
+  - component: {fileID: 339085178}
   m_Layer: 0
   m_Name: Digger
   m_TagString: Player
@@ -1417,7 +1418,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339085171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1.01, z: -1}
+  m_LocalPosition: {x: -0.65, y: 1.01, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 143959706}
@@ -1486,6 +1487,7 @@ MonoBehaviour:
   fuelText: {fileID: 1083214964}
   shopCanvas: {fileID: 901613519}
   informationCanvas: {fileID: 123876747}
+  drillAudioSource: {fileID: 339085178}
 --- !u!58 &339085177
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1501,6 +1503,87 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.0625}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!82 &339085178
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339085171}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243657412835516726, guid: 597da7bf3ddc61f41aa86add47aecb40,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: dbddbfed3c276d54ca37718cfaf652be, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &362342335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,7 +3257,7 @@ MonoBehaviour:
       Emerald: 0
       Diamond: 0
       Starstone: 0
-      Money: 10
+      Money: 0
   - Obj: {fileID: 11400000, guid: 66d8bff8d55cf9348a5efb2a830a0248, type: 2}
     Cost:
       Coal: 0
@@ -3182,7 +3265,7 @@ MonoBehaviour:
       Emerald: 0
       Diamond: 0
       Starstone: 0
-      Money: 500
+      Money: 0
   - Obj: {fileID: 11400000, guid: bce7239bfa8cd0845bf2a6e29685fb25, type: 2}
     Cost:
       Coal: 0
@@ -3190,7 +3273,7 @@ MonoBehaviour:
       Emerald: 15
       Diamond: 0
       Starstone: 0
-      Money: 2000
+      Money: 150
   - Obj: {fileID: 11400000, guid: 90032e3dc53eb7c439409aee78c2c77d, type: 2}
     Cost:
       Coal: 0
@@ -3198,7 +3281,7 @@ MonoBehaviour:
       Emerald: 0
       Diamond: 15
       Starstone: 0
-      Money: 2000
+      Money: 400
   fuelTanks:
   - Obj: {fileID: 11400000, guid: 89390bcb885294448ad89bfcd9359aed, type: 2}
     Cost:
@@ -3224,7 +3307,7 @@ MonoBehaviour:
       Emerald: 0
       Diamond: 0
       Starstone: 0
-      Money: 2000
+      Money: 1000
   escapeRocket:
     Obj: {fileID: 11400000, guid: c378f341baeaa7943a0ce4a74186f848, type: 2}
     Cost:
@@ -3233,7 +3316,7 @@ MonoBehaviour:
       Emerald: 0
       Diamond: 0
       Starstone: 15
-      Money: 4000
+      Money: 2000
 --- !u!114 &901613525
 MonoBehaviour:
   m_ObjectHideFlags: 0

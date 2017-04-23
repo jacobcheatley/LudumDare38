@@ -78,7 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6d6ed0f57f1184ab4c649a9c16354b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionTime: 0.8
+  destructionTime: 0.4
+  oreRolls: []
+  tier: 0
+  HeldOre: {fileID: 0}
 --- !u!212 &212821908539421520
 SpriteRenderer:
   m_ObjectHideFlags: 1

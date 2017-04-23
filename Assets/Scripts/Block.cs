@@ -61,7 +61,6 @@ public class Block : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Exit");
         if (other.tag == "Drill")
             inDrill = false;
     }

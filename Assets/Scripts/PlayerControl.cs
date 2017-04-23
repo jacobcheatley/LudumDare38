@@ -1,5 +1,4 @@
-﻿using NUnit.Framework.Constraints;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
@@ -15,6 +14,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject shopCanvas;
     [SerializeField] private GameObject informationCanvas;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource drillAudioSource;
+
     private Rigidbody2D rb;
     private Camera mainCamera;
     private Animator drillAnimator;
@@ -25,6 +27,7 @@ public class PlayerControl : MonoBehaviour
     private float fuel;
     private float health;
     private bool inShop;
+    private float drillVolume = 0f;
 
     void Start()
     {
@@ -75,15 +78,21 @@ public class PlayerControl : MonoBehaviour
             drillAxis.transform.rotation = Quaternion.AngleAxis(Mathf.LerpAngle(currentAngle, newAngle, Time.deltaTime * 20f), Vector3.forward);
         }
 
+        // Audio logic
+        drillVolume += drilling ? Time.deltaTime : -Time.deltaTime;
+        drillVolume = Mathf.Clamp01(drillVolume);
+        drillAudioSource.volume = drillVolume / 2f;
+
         // Additional drilling and resource logic
         drillEffector.SetActive(drilling);
-        drillAnimator.SetFloat("Speed", drilling ? 1 : 0);
+        drillAnimator.SetFloat("Speed", drillVolume * 2f);
 
         fuel -= drilling ? Time.deltaTime * 5f : 0;
         fuel -= thrusting ? Time.deltaTime * 4f : 0;
 
         fuelSlider.SetSize(fuel / parts.fuelTank.MaxFuel);
         fuelText.text = ((int)fuel).ToString();
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -96,6 +105,7 @@ public class PlayerControl : MonoBehaviour
 
         if (other.tag == "Information")
         {
+            inShop = true;
             informationCanvas.SetActive(true);
         }
     }
@@ -110,6 +120,7 @@ public class PlayerControl : MonoBehaviour
 
         if (other.tag == "Information")
         {
+            inShop = false;
             informationCanvas.SetActive(false);
         }
     }

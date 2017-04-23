@@ -3,7 +3,8 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Pp]hotoshop
+/[Pp]hotoshop/
+/[Aa]udioDev/
 /Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
