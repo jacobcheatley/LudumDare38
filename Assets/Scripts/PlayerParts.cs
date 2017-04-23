@@ -17,7 +17,7 @@ public class PlayerParts : MonoBehaviour
     [SerializeField] private SpriteRenderer drillRenderer;
     [SerializeField] private SpriteRenderer diggerRenderer;
     [SerializeField] private Text resourceText;
-    [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] public SoundPlayer soundPlayer;
     [SerializeField] private PlayerControl playerControl;
     
 

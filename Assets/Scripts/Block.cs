@@ -7,10 +7,12 @@ public class Block : MonoBehaviour
     [SerializeField] private float tier;
 
     [HideInInspector] public OreInfo HeldOre;
+
     private float currentTimeElapsed = 0f;
     private SpriteRenderer renderer;
     private bool inDrill = false;
     private PlayerParts playerParts;
+    private SoundPlayer soundPlayer;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class Block : MonoBehaviour
         if (inDrill && playerParts.drillHead.Power >= tier)
         {
             currentTimeElapsed = currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Speed;
+            playerParts.soundPlayer.SetCrunchLoopVolume(currentTimeElapsed * 3 / destructionTime);
         }
         else
         {
@@ -47,6 +50,8 @@ public class Block : MonoBehaviour
             if (HeldOre != null)
                 playerParts.AddOre(HeldOre);
             Destroy(gameObject);
+            playerParts.soundPlayer.PlayCrack();
+            playerParts.soundPlayer.SetCrunchLoopVolume(0);
         }
     }
 
