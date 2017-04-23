@@ -37,7 +37,7 @@ public class Block : MonoBehaviour
         }
         else
         {
-            currentTimeElapsed -= Time.deltaTime;
+            currentTimeElapsed -= Time.deltaTime / 4f;
             currentTimeElapsed = currentTimeElapsed < 0 ? 0 : currentTimeElapsed;
         }
         float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);

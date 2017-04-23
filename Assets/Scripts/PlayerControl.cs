@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private DisplaySlider fuelSlider;
     [SerializeField] private Text fuelText;
     [SerializeField] private GameObject shopCanvas;
+    [SerializeField] private GameObject informationCanvas;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -92,6 +93,11 @@ public class PlayerControl : MonoBehaviour
             inShop = true;
             shopCanvas.SetActive(true);
         }
+
+        if (other.tag == "Information")
+        {
+            informationCanvas.SetActive(true);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -100,6 +106,32 @@ public class PlayerControl : MonoBehaviour
         {
             inShop = false;
             shopCanvas.SetActive(false);
+        }
+
+        if (other.tag == "Information")
+        {
+            informationCanvas.SetActive(false);
+        }
+    }
+
+    public int RefuelCost()
+    {
+        return (int)((parts.fuelTank.MaxFuel - fuel) / 2);
+    }
+
+    public void Refuel()
+    {
+        float quantity = parts.fuelTank.MaxFuel - fuel;
+        BuyFuel(quantity);
+    }
+
+    public void BuyFuel(float quantity)
+    {
+        int price = (int)(quantity / 2);
+        if (parts.Money >= price)
+        {
+            parts.Money -= price;
+            fuel += quantity;
         }
     }
 }

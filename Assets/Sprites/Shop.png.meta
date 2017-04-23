@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 622cc7d880bed4649b4ccc46e5c93bee
-timeCreated: 1492848523
+timeCreated: 1492913027
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Shop_0
     21300002: Shop_1
     21300004: Shop_2
+    21300006: Shop_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -56,7 +57,7 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 256
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -64,7 +65,7 @@ TextureImporter:
   - buildTarget: Standalone
     maxTextureSize: 256
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +73,7 @@ TextureImporter:
   - buildTarget: Android
     maxTextureSize: 256
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -80,7 +81,7 @@ TextureImporter:
   - buildTarget: WebGL
     maxTextureSize: 256
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,6 +123,19 @@ TextureImporter:
         y: 0
         width: 31
         height: 3
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 13
+        width: 19
+        height: 19
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

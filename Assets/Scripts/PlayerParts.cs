@@ -21,7 +21,7 @@ public class PlayerParts : MonoBehaviour
 
     public void Start()
     {
-        Money = 9000; // Broken because inspector = dumb
+        Money = 0; // Broken because inspector = dumb
         UpdateColors();
     }
 
@@ -47,6 +47,48 @@ public class PlayerParts : MonoBehaviour
         else if (obj is EscapeRocket)
             Debug.Log("Win");
         UpdateColors();
+    }
+
+    public void SellOre(string ore)
+    {
+        switch (ore)
+        {
+            case "Coal":
+                if (Coal > 0)
+                {
+                    Coal--;
+                    Money += 10;
+                }
+                break;
+            case "Ruby":
+                if (Ruby > 0)
+                {
+                    Ruby--;
+                    Money += 50;
+                }
+                break;
+            case "Emerald":
+                if (Emerald > 0)
+                {
+                    Emerald--;
+                    Money += 100;
+                }
+                break;
+            case "Diamond":
+                if (Diamond > 0)
+                {
+                    Diamond--;
+                    Money += 500;
+                }
+                break;
+            case "Starstone":
+                if (Starstone > 0)
+                {
+                    Starstone--;
+                    Money += 1000;
+                }
+                break;
+        }
     }
 
     public void AddOre(OreInfo info)
