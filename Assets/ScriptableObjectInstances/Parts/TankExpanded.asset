@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Expanded Tank
   TankColor: {r: 0.61764705, g: 0.61764705, b: 0.61764705, a: 1}
-  MaxFuel: 800
+  MaxFuel: 600
   Description: + Free refill
