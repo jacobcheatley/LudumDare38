@@ -21,7 +21,7 @@ public class PlayerParts : MonoBehaviour
 
     public void Start()
     {
-        Money = 10000; // Broken because inspector = dumb
+        Money = 9000; // Broken because inspector = dumb
         UpdateColors();
     }
 

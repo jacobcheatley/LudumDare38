@@ -1227,7 +1227,7 @@ GameObject:
   - component: {fileID: 454934424}
   - component: {fileID: 454934423}
   m_Layer: 0
-  m_Name: Game Controller
+  m_Name: Level Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,16 +1248,16 @@ MonoBehaviour:
   - Height: 1
     Block: {fileID: 1953953821426474, guid: 4781fd8fbddc60d43b4dc68b8e397ced, type: 2}
     HasCaves: 0
-  - Height: 4
+  - Height: 3
     Block: {fileID: 1058442014896712, guid: 1bb51e41d34596643be1195142c449d7, type: 2}
     HasCaves: 0
-  - Height: 40
+  - Height: 25
     Block: {fileID: 1425969676581018, guid: 4e87f3a5af2084a479329cd062865c36, type: 2}
     HasCaves: 1
-  - Height: 100
+  - Height: 40
     Block: {fileID: 1425969676581018, guid: e5c9b499627ba6f43a422cd2e4c2b07a, type: 2}
     HasCaves: 1
-  - Height: 50
+  - Height: 40
     Block: {fileID: 1425969676581018, guid: a9c7eb807751fe94b81659c3bfad4f9c, type: 2}
     HasCaves: 1
   constants: {fileID: 11400000, guid: 4d4857c2ff40bb94098d0c4d9a0dc9c9, type: 2}
@@ -1395,7 +1395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220, y: -150}
+  m_AnchoredPosition: {x: -174, y: -150}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &623229194
@@ -1424,7 +1424,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -2188,7 +2188,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 2
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -2226,7 +2226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -224, y: -150}
+  m_AnchoredPosition: {x: -170, y: -150}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1470684273
