@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject drillHead;
 
     [Header("UI")]
-    [SerializeField] private DisplaySlider fuelSlider;
+    [SerializeField] private FuelDisplay fuelDisplay;
     [SerializeField] private Text fuelText;
     [SerializeField] private GameObject shopCanvas;
     [SerializeField] private GameObject informationCanvas;
@@ -111,7 +111,7 @@ public class PlayerControl : MonoBehaviour
         fuel -= drilling ? Time.deltaTime * 3f : 0;
         fuel -= thrusting ? Time.deltaTime * 3f : 0;
 
-        fuelSlider.SetSize(fuel / parts.fuelTank.MaxFuel);
+        fuelDisplay.SetPercent(fuel / parts.fuelTank.MaxFuel);
         fuelText.text = ((int)fuel).ToString();
         
     }
