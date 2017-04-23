@@ -11,12 +11,15 @@ public class ShopButton : MonoBehaviour
 
     private PlayerParts parts;
     private Action function;
+    private SoundPlayer soundPlayer;
 
     public void Initialise(ShopItem item, Sprite sprite, PlayerParts parts, Action finishedFunction)
     {
         Image image = GetComponent<Image>();
         image.sprite = sprite;
         image.color = item.Obj.ObjectColor();
+
+        soundPlayer = FindObjectOfType<SoundPlayer>();
 
         Obj = item.Obj;
         Cost = item.Cost;
@@ -28,13 +31,14 @@ public class ShopButton : MonoBehaviour
     {
         if (Cost.CanAfford(parts))
         {
+            soundPlayer.PlayBuy();
             parts.AddPart(Obj);
             Cost.Charge(parts);
             function();
         }
         else
         {
-            // TODO: Error display
+            soundPlayer.PlayFail();
             Debug.Log("Nuk g");
         }
     }

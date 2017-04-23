@@ -17,6 +17,7 @@ public class PlayerParts : MonoBehaviour
     [SerializeField] private SpriteRenderer drillRenderer;
     [SerializeField] private SpriteRenderer diggerRenderer;
     [SerializeField] private Text resourceText;
+    [SerializeField] private SoundPlayer soundPlayer;
     
 
     public void Start()
@@ -58,35 +59,50 @@ public class PlayerParts : MonoBehaviour
                 {
                     Coal--;
                     Money += 10;
+                    soundPlayer.PlaySell();
                 }
+                else
+                    soundPlayer.PlayFail();
                 break;
             case "Ruby":
                 if (Ruby > 0)
                 {
                     Ruby--;
                     Money += 50;
+                    soundPlayer.PlaySell();
                 }
+                else
+                    soundPlayer.PlayFail();
                 break;
             case "Emerald":
                 if (Emerald > 0)
                 {
                     Emerald--;
                     Money += 100;
+                    soundPlayer.PlaySell();
                 }
+                else
+                    soundPlayer.PlayFail();
                 break;
             case "Diamond":
                 if (Diamond > 0)
                 {
                     Diamond--;
                     Money += 500;
+                    soundPlayer.PlaySell();
                 }
+                else
+                    soundPlayer.PlayFail();
                 break;
             case "Starstone":
                 if (Starstone > 0)
                 {
                     Starstone--;
                     Money += 1000;
+                    soundPlayer.PlaySell();
                 }
+                else
+                    soundPlayer.PlayFail();
                 break;
         }
     }

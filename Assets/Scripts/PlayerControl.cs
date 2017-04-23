@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource drillAudioSource;
+    [SerializeField] private AudioClip higherDrillClip;
+    [SerializeField] private SoundPlayer soundPlayer;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -27,7 +29,10 @@ public class PlayerControl : MonoBehaviour
     private float fuel;
     private float health;
     private bool inShop;
+
+    // Audio
     private float drillVolume = 0f;
+    private bool setHigherDrill = false;
 
     void Start()
     {
@@ -79,6 +84,12 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Audio logic
+        if (!setHigherDrill && parts.drillHead.Power >= 2)
+        {
+            drillAudioSource.clip = higherDrillClip;
+            drillAudioSource.Play();
+            setHigherDrill = true;
+        }
         drillVolume += drilling ? Time.deltaTime : -Time.deltaTime;
         drillVolume = Mathf.Clamp01(drillVolume);
         drillAudioSource.volume = drillVolume / 3f;
@@ -143,6 +154,11 @@ public class PlayerControl : MonoBehaviour
         {
             parts.Money -= price;
             fuel += quantity;
+            soundPlayer.PlayFuel();
+        }
+        else
+        {
+            soundPlayer.PlayFail();
         }
     }
 }
