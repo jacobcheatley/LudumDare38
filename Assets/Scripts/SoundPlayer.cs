@@ -19,12 +19,12 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayBuy()
     {
-        audio.PlayOneShot(buy);
+        audio.PlayOneShot(buy, 0.3f);
     }
 
     public void PlaySell()
     {
-        audio.PlayOneShot(sell);
+        audio.PlayOneShot(sell, 0.3f);
     }
     
     public void PlayFuel()
@@ -34,7 +34,7 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlayFail()
     {
-        audio.PlayOneShot(fail);
+        audio.PlayOneShot(fail, 0.7f);
     }
 
     public void PlayCrack()

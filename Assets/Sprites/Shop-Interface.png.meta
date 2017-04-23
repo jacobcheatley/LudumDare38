@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d87eb006279c56e45bba3d5f9c59df15
-timeCreated: 1492914644
+timeCreated: 1492931218
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,12 @@ TextureImporter:
     21300002: Shop-Interface_1
     21300004: Shop-Interface_2
     21300006: Shop-Interface_3
+    21300008: Shop-Interface_4
+    21300010: Shop-Interface_5
+    21300012: Shop-Interface_6
+    21300014: Shop-Interface_7
+    21300016: Shop-Interface_8
+    21300018: Shop-Interface_9
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -138,6 +144,84 @@ TextureImporter:
         height: 16
       alignment: 5
       pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop-Interface_4
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop-Interface_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop-Interface_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop-Interface_7
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop-Interface_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Shop-Interface_9
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 496
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
