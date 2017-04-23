@@ -56,7 +56,7 @@ public class PlayerControl : MonoBehaviour
         float vertical = Input.GetAxisRaw("VerticalMove");
         thrusting = vertical > 0;
         if (thrusting)
-            rb.AddForce(Vector2.up * 2f * parts.thrusters.Power);
+            rb.AddForce(Vector2.up * 2.3f * parts.thrusters.Power);
 
 
         // Drill Rotation

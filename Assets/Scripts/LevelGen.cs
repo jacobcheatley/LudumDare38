@@ -8,7 +8,8 @@ public class Layer
 {
     public int Height;
     public GameObject Block;
-    public Boolean HasCaves;
+    public bool HasCaves;
+    public Color BackgroundColor;
 }
 
 public class LevelGen : MonoBehaviour
@@ -18,6 +19,7 @@ public class LevelGen : MonoBehaviour
     [SerializeField] private GameConstants constants;
     [SerializeField] private GameObject boundary;
     [SerializeField] private float caveThreshold;
+    [SerializeField] private GameObject background;
 
     void Start()
     {
@@ -28,6 +30,9 @@ public class LevelGen : MonoBehaviour
         int y = 0;
         foreach (Layer layer in layers)
         {
+            GameObject bg = Instantiate(background, new Vector3(-0.5f, -y - layer.Height / 2, 20), Quaternion.identity, gameObject.transform);
+            bg.GetComponent<SpriteRenderer>().color = layer.BackgroundColor;
+            bg.transform.localScale = new Vector3(16, layer.Height, 1);
             for (int yy = 0; yy < layer.Height; yy++)
             {
                 for (int xx = 0; xx < constants.Width; xx++)
