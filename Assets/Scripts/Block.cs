@@ -47,6 +47,8 @@ public class Block : MonoBehaviour
             currentTimeElapsed = currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Speed;
             playerParts.UpdateParticleColors(particleGradient);
             playerParts.soundPlayer.SetCrunchLoopVolume(currentTimeElapsed * 3 / destructionTime);
+            if (tier >= 0)
+                playerParts.soundPlayer.PlayDink();
             playerParts.Emission();
         }
         else if (inDrill && errorCooldown < 0f)
@@ -55,6 +57,7 @@ public class Block : MonoBehaviour
             GameObject error = Instantiate(playerParts.errorPrefab, Vector3.one * 256, Quaternion.identity, playerParts.playerControl.hudCanvas.transform);
             error.GetComponent<ErrorText>().Init("Your drill is too weak.");
             playerParts.soundPlayer.PlayFail();
+            playerParts.soundPlayer.PlayDink();
             errorCooldown = 2.5f;
         }
         else

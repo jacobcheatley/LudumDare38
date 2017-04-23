@@ -11,11 +11,18 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip bump;
     [SerializeField] private AudioClip[] aboveGroundClips;
     [SerializeField] private AudioClip[] belowGroundClips;
+    [SerializeField] private AudioClip[] dinkNoises;
 
     [SerializeField] private AudioSource sfx;
     [SerializeField] private AudioSource crunchLoop;
     [SerializeField] private AudioSource ambience;
     [SerializeField] private AudioSource mainSource;
+    private float dinkCD;
+
+    void Update()
+    {
+        dinkCD -= Time.deltaTime;
+    }
 
     public void PlayBuy()
     {
@@ -50,6 +57,15 @@ public class SoundPlayer : MonoBehaviour
     public void PlayBump()
     {
         sfx.PlayOneShot(bump);
+    }
+    
+    public void PlayDink()
+    {
+        if (dinkCD < 0f)
+        {
+            ambience.PlayOneShot(dinkNoises[Random.Range(0, dinkNoises.Length - 1)], 0.2f);
+            dinkCD = Random.Range(0.2f, 0.25f);
+        }
     }
 
     public void PlayAboveGround(float volume)
