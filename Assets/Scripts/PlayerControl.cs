@@ -81,14 +81,14 @@ public class PlayerControl : MonoBehaviour
         // Audio logic
         drillVolume += drilling ? Time.deltaTime : -Time.deltaTime;
         drillVolume = Mathf.Clamp01(drillVolume);
-        drillAudioSource.volume = drillVolume / 2f;
+        drillAudioSource.volume = drillVolume / 3f;
 
         // Additional drilling and resource logic
         drillEffector.SetActive(drilling);
-        drillAnimator.SetFloat("Speed", drillVolume * 2f);
+        drillAnimator.SetFloat("Speed", drillVolume * drillVolume * 1.5f);
 
-        fuel -= drilling ? Time.deltaTime * 5f : 0;
-        fuel -= thrusting ? Time.deltaTime * 4f : 0;
+        fuel -= drilling ? Time.deltaTime * 3f : 0;
+        fuel -= thrusting ? Time.deltaTime * 3f : 0;
 
         fuelSlider.SetSize(fuel / parts.fuelTank.MaxFuel);
         fuelText.text = ((int)fuel).ToString();
