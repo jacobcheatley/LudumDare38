@@ -43,7 +43,11 @@ public class Block : MonoBehaviour
         float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
         renderer.color = new Color(1f, 1f, 1f, alpha);
         if (currentTimeElapsed >= destructionTime)
+        {
+            if (HeldOre != null)
+                playerParts.AddOre(HeldOre);
             Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
