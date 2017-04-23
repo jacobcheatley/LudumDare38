@@ -98,7 +98,7 @@ public class Shop : MonoBehaviour
         PlaceShopButton(drillHeadPlace, drillSprite, drillHeads[drillIndex], NextDrill);
         PlaceShopButton(fuelTankPlace, fuelTankSprite, fuelTanks[fuelIndex], NextFuel);
         PlaceShopButton(thrustersPlace, thrustersSprite, thrusters[thrustersIndex], NextThrusters);
-        PlaceShopButton(escapeRocketPlace, escapeRocketSprite, escapeRocket, WinGame);
+        PlaceShopButton(escapeRocketPlace, escapeRocketSprite, escapeRocket, () => {});
 
         UpdateItem(drillHeads[drillIndex], drillName, drillDesc);
         UpdateItem(fuelTanks[fuelIndex], fuelTankName, fuelTankDesc);
@@ -149,11 +149,6 @@ public class Shop : MonoBehaviour
             PlaceShopButton(thrustersPlace, thrustersSprite, thrusters[thrustersIndex], NextThrusters);
             UpdateItem(thrusters[thrustersIndex], thrustersName, thrustersDesc);
         }
-    }
-
-    void WinGame()
-    {
-        Debug.Log("A winner is you.");
     }
 
     void PlaceShopButton(Transform place, Sprite sprite, ShopItem item, Action next)

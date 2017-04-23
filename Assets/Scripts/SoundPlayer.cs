@@ -8,44 +8,57 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip fail;
     [SerializeField] private AudioClip crack;
     [SerializeField] private AudioClip pop;
+    [SerializeField] private AudioClip bump;
+    [SerializeField] private AudioClip[] aboveGroundClips;
+    [SerializeField] private AudioClip[] belowGroundClips;
 
-    private AudioSource audio;
-
+    [SerializeField] private AudioSource sfx;
     [SerializeField] private AudioSource crunchLoop;
-
-    void Start()
-    {
-        audio = GetComponent<AudioSource>();
-    }
+    [SerializeField] private AudioSource ambience;
 
     public void PlayBuy()
     {
-        audio.PlayOneShot(buy, 0.3f);
+        sfx.PlayOneShot(buy, 0.3f);
     }
 
     public void PlaySell()
     {
-        audio.PlayOneShot(sell, 0.3f);
+        sfx.PlayOneShot(sell, 0.3f);
     }
     
     public void PlayFuel()
     {
-        audio.PlayOneShot(fuel);
+        sfx.PlayOneShot(fuel);
     }
 
     public void PlayFail()
     {
-        audio.PlayOneShot(fail, 0.7f);
+        sfx.PlayOneShot(fail, 0.7f);
     }
 
     public void PlayCrack()
     {
-        audio.PlayOneShot(crack, 0.3f);
+        sfx.PlayOneShot(crack, 0.3f);
     }
 
     public void PlayPop()
     {
-        audio.PlayOneShot(pop);
+        sfx.PlayOneShot(pop);
+    }
+
+    public void PlayBump()
+    {
+        sfx.PlayOneShot(bump);
+    }
+
+    public void PlayAboveGround(float volume)
+    {
+        ambience.PlayOneShot(aboveGroundClips[Random.Range(0, aboveGroundClips.Length - 1)], volume);
+    }
+
+    public void PlayBelowGround(float volume)
+    {
+        ambience.PlayOneShot(belowGroundClips[Random.Range(0, aboveGroundClips.Length - 1)], volume);
     }
 
     public void SetCrunchLoopVolume(float volume)

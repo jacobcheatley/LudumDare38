@@ -76,6 +76,8 @@ MonoBehaviour:
     Diamond: 0
     Starstone: 0
     Money: 0
+  errorPrefab: {fileID: 1506539138642316, guid: 34f61c3d2c87d024aa98a6308c5c1e72,
+    type: 2}
 --- !u!114 &114699186014522248
 MonoBehaviour:
   m_ObjectHideFlags: 1

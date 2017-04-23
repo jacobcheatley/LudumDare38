@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Constants
   m_EditorClassIdentifier: 
   Width: 16
-  AboveHeight: 16
+  AboveHeight: 32

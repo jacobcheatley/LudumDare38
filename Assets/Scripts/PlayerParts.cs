@@ -18,8 +18,9 @@ public class PlayerParts : MonoBehaviour
     [SerializeField] private SpriteRenderer diggerRenderer;
     [SerializeField] private Text resourceText;
     [SerializeField] public SoundPlayer soundPlayer;
-    [SerializeField] private PlayerControl playerControl;
+    [SerializeField] public PlayerControl playerControl;
     [SerializeField] private ParticleSystem system;
+    [SerializeField] public GameObject errorPrefab;
 
     public void Start()
     {
@@ -55,12 +56,13 @@ public class PlayerParts : MonoBehaviour
         else if (obj is Thrusters)
             thrusters = (Thrusters)obj;
         else if (obj is EscapeRocket)
-            Debug.Log("Win");
+            playerControl.Win();
         UpdateColors();
     }
 
     public void SellOre(string ore)
     {
+        bool success = false;
         switch (ore)
         {
             case "Coal":
@@ -68,51 +70,51 @@ public class PlayerParts : MonoBehaviour
                 {
                     Coal--;
                     Money += 10;
-                    soundPlayer.PlaySell();
+                    success = true;
                 }
-                else
-                    soundPlayer.PlayFail();
                 break;
             case "Ruby":
                 if (Ruby > 0)
                 {
                     Ruby--;
                     Money += 50;
-                    soundPlayer.PlaySell();
+                    success = true;
                 }
-                else
-                    soundPlayer.PlayFail();
                 break;
             case "Emerald":
                 if (Emerald > 0)
                 {
                     Emerald--;
                     Money += 100;
-                    soundPlayer.PlaySell();
+                    success = true;
                 }
-                else
-                    soundPlayer.PlayFail();
                 break;
             case "Diamond":
                 if (Diamond > 0)
                 {
                     Diamond--;
                     Money += 500;
-                    soundPlayer.PlaySell();
+                    success = true;
                 }
-                else
-                    soundPlayer.PlayFail();
                 break;
             case "Starstone":
                 if (Starstone > 0)
                 {
                     Starstone--;
                     Money += 1000;
-                    soundPlayer.PlaySell();
+                    success = true;
                 }
-                else
-                    soundPlayer.PlayFail();
                 break;
+        }
+        if (success)
+        {
+            soundPlayer.PlaySell();
+        }
+        else
+        {
+            GameObject error = Instantiate(errorPrefab, Vector3.one * 256, Quaternion.identity, playerControl.shopCanvas.transform);
+            error.GetComponent<ErrorText>().Init("Don't have that ore.");
+            soundPlayer.PlayFail();
         }
     }
 

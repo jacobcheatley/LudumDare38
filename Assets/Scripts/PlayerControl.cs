@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
@@ -11,15 +13,23 @@ public class PlayerControl : MonoBehaviour
     [Header("UI")]
     [SerializeField] private FuelDisplay fuelDisplay;
     [SerializeField] private Text fuelText;
-    [SerializeField] private GameObject shopCanvas;
+    [SerializeField] public GameObject shopCanvas;
     [SerializeField] private GameObject informationCanvas;
+    [SerializeField] private Text depthText;
+    [SerializeField] private GameObject gameOverCanvas;
+    [SerializeField] private GameObject winCanvas;
+    [SerializeField] private GameObject errorPrefab;
+    [SerializeField] public GameObject hudCanvas;
 
     [Header("Audio")]
+    [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioSource drillAudioSource;
     [SerializeField] private AudioSource idleAudioSource;
     [SerializeField] private AudioSource revAudioSource;
     [SerializeField] private AudioClip higherDrillClip;
     [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private AudioMixerSnapshot defaultSnapshot;
+    [SerializeField] private AudioMixerSnapshot mutedSnapshot;
 
     private Rigidbody2D rb;
     private Camera mainCamera;
@@ -39,6 +49,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        mixer.TransitionToSnapshots(new[] { defaultSnapshot }, new[] { 1f }, 0f);
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         drillAnimator = drillHead.GetComponent<Animator>();
@@ -104,16 +115,43 @@ public class PlayerControl : MonoBehaviour
         revVolume = Mathf.Clamp01(revVolume);
         revAudioSource.volume = revVolume / 8f;
 
+        if (Random.value < 0.1f * Time.deltaTime && transform.position.y >= -4)
+            soundPlayer.PlayAboveGround(Mathf.Clamp01((transform.position.y + 4) / 32f));
+
+        if (Random.value < 0.05f * Time.deltaTime && transform.position.y <= -8)
+        {
+            float sqrtVol = Mathf.Clamp01(Mathf.Abs(transform.position.y - 8) / 100f);
+            soundPlayer.PlayBelowGround(sqrtVol * sqrtVol);
+            StartCoroutine(ShakeIt(sqrtVol));
+        }
+
         // Additional drilling and resource logic
         drillEffector.SetActive(drilling);
         drillAnimator.SetFloat("Speed", drillVolume * drillVolume * 1.5f);
 
-        fuel -= drilling ? Time.deltaTime * 3f : 0;
-        fuel -= thrusting ? Time.deltaTime * 3f : 0;
+        // Fuel
+        fuel -= drilling ? Time.deltaTime * 4f : 0;
+        fuel -= thrusting ? Time.deltaTime * 4f : 0;
 
         fuelDisplay.SetPercent(fuel / parts.fuelTank.MaxFuel);
         fuelText.text = ((int)fuel).ToString();
-        
+
+        if (fuel <= 0)
+            Lose();
+
+        depthText.text = string.Format("Depth:{0,3:##0}", -Mathf.RoundToInt(transform.position.y - 1));
+    }
+
+    IEnumerator ShakeIt(float intensity)
+    {
+        yield return new WaitForSeconds(0.15f);
+        int shakes = 6;
+        while (shakes > 0)
+        {
+            shakes--;
+            rb.AddForce(Random.insideUnitCircle.normalized * intensity * 10f);
+            yield return new WaitForSeconds(0.15f);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -168,6 +206,8 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
+            GameObject error = Instantiate(errorPrefab, Vector3.one * 256, Quaternion.identity, shopCanvas.transform);
+            error.GetComponent<ErrorText>().Init("Can't afford that fuel.");
             soundPlayer.PlayFail();
         }
     }
@@ -176,5 +216,17 @@ public class PlayerControl : MonoBehaviour
     {
         fuel = parts.fuelTank.MaxFuel;
         soundPlayer.PlayFuel();
+    }
+
+    public void Win()
+    {
+        mixer.TransitionToSnapshots(new[] { mutedSnapshot }, new[] { 1f }, 3f);
+        winCanvas.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        mixer.TransitionToSnapshots(new [] { mutedSnapshot }, new [] { 1f }, 3f);
+        gameOverCanvas.SetActive(true);
     }
 }

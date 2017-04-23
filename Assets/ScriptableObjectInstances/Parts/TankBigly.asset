@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Bigly Tank
   TankColor: {r: 0.9411765, g: 0.5990693, b: 0.16608995, a: 1}
-  MaxFuel: 5000
+  MaxFuel: 1500
   Description: The best tank

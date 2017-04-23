@@ -9,6 +9,8 @@ public class ShopButton : MonoBehaviour
     [HideInInspector]
     public Cost Cost;
 
+    [SerializeField] private GameObject errorPrefab;
+
     private PlayerParts parts;
     private Action function;
     private SoundPlayer soundPlayer;
@@ -38,6 +40,8 @@ public class ShopButton : MonoBehaviour
         }
         else
         {
+            GameObject error = Instantiate(errorPrefab, Vector3.one * 256, Quaternion.identity, gameObject.transform.parent);
+            error.GetComponent<ErrorText>().Init("Can't afford that item.");
             soundPlayer.PlayFail();
         }
     }
