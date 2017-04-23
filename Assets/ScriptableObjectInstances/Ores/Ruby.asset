@@ -15,3 +15,4 @@ MonoBehaviour:
   Value: 50
   Name: Ruby
   OrePrefab: {fileID: 1576681062187832, guid: 3a46884698e2d42499e76970e7f8bd88, type: 2}
+  ParticleColor: {r: 0.7568628, g: 0.09411766, b: 0.09411766, a: 1}

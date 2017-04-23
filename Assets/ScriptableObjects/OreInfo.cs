@@ -7,6 +7,7 @@ public class OreInfo : ScriptableObject
     public int Value;
     public string Name;
     public GameObject OrePrefab;
+    public Color ParticleColor;
 }
 
 [System.Serializable]

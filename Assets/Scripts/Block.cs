@@ -5,6 +5,7 @@ public class Block : MonoBehaviour
     [SerializeField] private float destructionTime;
     [SerializeField] private OreRoll[] oreRolls;
     [SerializeField] private float tier;
+    [SerializeField] private Color rockColor;
 
     [HideInInspector] public OreInfo HeldOre;
 
@@ -14,6 +15,7 @@ public class Block : MonoBehaviour
     private bool inDrill = false;
     private PlayerParts playerParts;
     private SoundPlayer soundPlayer;
+    private ParticleSystem.MinMaxGradient particleGradient;
 
     void Start()
     {
@@ -31,6 +33,8 @@ public class Block : MonoBehaviour
                 break;
             }
         }
+
+        particleGradient = new ParticleSystem.MinMaxGradient(rockColor, HeldOre != null ? HeldOre.ParticleColor : rockColor);
     }
 
     void Update()
@@ -38,13 +42,18 @@ public class Block : MonoBehaviour
         if (inDrill && playerParts.drillHead.Power >= tier)
         {
             currentTimeElapsed = currentTimeElapsed + Time.deltaTime * playerParts.drillHead.Speed;
+            playerParts.UpdateParticleColors(particleGradient);
             playerParts.soundPlayer.SetCrunchLoopVolume(currentTimeElapsed * 3 / destructionTime);
+            playerParts.Emission();
         }
         else
         {
             currentTimeElapsed -= Time.deltaTime / 4f;
             currentTimeElapsed = currentTimeElapsed < 0 ? 0 : currentTimeElapsed;
+            if (playerParts != null)
+                playerParts.soundPlayer.SetCrunchLoopVolume(currentTimeElapsed * 3 / destructionTime);
         }
+
         float alpha = 1f - (currentTimeElapsed / destructionTime * 0.75f);
         renderer.color = new Color(1f, 1f, 1f, alpha);
         if (oreRenderer != null)
@@ -52,7 +61,10 @@ public class Block : MonoBehaviour
         if (currentTimeElapsed >= destructionTime)
         {
             if (HeldOre != null)
+            {
                 playerParts.AddOre(HeldOre);
+                playerParts.soundPlayer.PlayPop();
+            }
             Destroy(gameObject);
             playerParts.soundPlayer.PlayCrack();
             playerParts.soundPlayer.SetCrunchLoopVolume(0);

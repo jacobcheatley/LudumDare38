@@ -81,6 +81,7 @@ MonoBehaviour:
   destructionTime: 0.4
   oreRolls: []
   tier: 0
+  rockColor: {r: 0.10196079, g: 0.61960787, b: 0.09411766, a: 1}
   HeldOre: {fileID: 0}
 --- !u!212 &212565222695972584
 SpriteRenderer:

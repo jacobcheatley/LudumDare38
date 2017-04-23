@@ -7,6 +7,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip fuel;
     [SerializeField] private AudioClip fail;
     [SerializeField] private AudioClip crack;
+    [SerializeField] private AudioClip pop;
 
     private AudioSource audio;
 
@@ -40,6 +41,11 @@ public class SoundPlayer : MonoBehaviour
     public void PlayCrack()
     {
         audio.PlayOneShot(crack, 0.3f);
+    }
+
+    public void PlayPop()
+    {
+        audio.PlayOneShot(pop);
     }
 
     public void SetCrunchLoopVolume(float volume)

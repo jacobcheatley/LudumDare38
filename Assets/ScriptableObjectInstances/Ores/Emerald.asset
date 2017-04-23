@@ -15,3 +15,4 @@ MonoBehaviour:
   Value: 100
   Name: Emerald
   OrePrefab: {fileID: 1432192218896014, guid: 20ffc5b541740404097f7d8dbf5fe005, type: 2}
+  ParticleColor: {r: 0.06666667, g: 0.7568628, b: 0.12941177, a: 1}

@@ -15,3 +15,4 @@ MonoBehaviour:
   Value: 200
   Name: Diamond
   OrePrefab: {fileID: 1203219439269116, guid: 924774a05755d8946b304c9f811ed340, type: 2}
+  ParticleColor: {r: 0.07450981, g: 0.03529412, b: 0.6156863, a: 1}

@@ -89,6 +89,7 @@ MonoBehaviour:
   - Info: {fileID: 11400000, guid: 87df1c2abb6a5d9439759c03be628189, type: 2}
     Value: 0.4
   tier: 1
+  rockColor: {r: 0.36862746, g: 0.37647063, b: 0.3803922, a: 1}
   HeldOre: {fileID: 0}
 --- !u!212 &212040426670400658
 SpriteRenderer:

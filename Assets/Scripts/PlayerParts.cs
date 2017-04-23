@@ -19,7 +19,7 @@ public class PlayerParts : MonoBehaviour
     [SerializeField] private Text resourceText;
     [SerializeField] public SoundPlayer soundPlayer;
     [SerializeField] private PlayerControl playerControl;
-    
+    [SerializeField] private ParticleSystem system;
 
     public void Start()
     {
@@ -30,6 +30,11 @@ public class PlayerParts : MonoBehaviour
     void Update()
     {
         resourceText.text = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}", Coal, Ruby, Emerald, Diamond, Starstone, Money);
+    }
+
+    public void Emission()
+    {
+        system.Emit(Random.value < 0.25f ? 1 : 0);
     }
 
     public void UpdateColors()
@@ -132,5 +137,12 @@ public class PlayerParts : MonoBehaviour
                 Starstone++;
                 break;
         }
+    }
+
+    public void UpdateParticleColors(ParticleSystem.MinMaxGradient gradient)
+    {
+        var test = system.main;
+        test.startColor = gradient;
+        system.Play();
     }
 }

@@ -15,3 +15,4 @@ MonoBehaviour:
   Value: 1000
   Name: Starstone
   OrePrefab: {fileID: 1877990261134516, guid: c36e3c2b86dd08d43b9d0b666f83cc91, type: 2}
+  ParticleColor: {r: 0.86274517, g: 0.8941177, b: 0.003921569, a: 1}
