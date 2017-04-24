@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionTime: 0.4
   oreRolls: []
-  tier: 0
+  tier: -1
   rockColor: {r: 0.5529412, g: 0.37647063, b: 0.18823531, a: 1}
   HeldOre: {fileID: 0}
 --- !u!212 &212821908539421520
